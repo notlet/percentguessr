@@ -1,9 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="shortcut icon" href="./img/icon.png" type="image/x-icon">
     <link rel="stylesheet" href="./style.css">
     <script src="./jquery.js"></script>
@@ -18,6 +17,7 @@
     <meta property="og:url" content="https://letgame.github.io/percentguessr/" />
     <meta property="og:image" content="https://cdn.discordapp.com/attachments/793459044022353962/912428127693717574/unknown.png" />
 </head>
+
 <body>
     <header>
         <a class="pageTitle underlineSelf">PercentGuessr</a>
@@ -44,16 +44,20 @@
             <div class="infoBar">
                 Score: <a id="score">0</a> | Round <a id="round">0</a>/10
             </div>
-            <input type="button" value="Start!" id="controlsButton" onclick="round = 1; generateRound()">
+            <input type="button" value="Start!" id="controlsButton" title="Press ENTER" onclick="round = 1; generateRound()">
         </div>
         <div class="winScreen" style="display: none;">
             <div class="winScreenFireworks"></div>
             <div class="winScreenContents">
                 <div class="winScreenTitle">YOU WON!</div>
                 <div class="winScreenFinalScore underlineSelf">Final Score: <a id="finalScoreCounter">0</a>/500</div>
-                <div class="winScreenNote" onclick="window.reload()">Reload the page to replay! (or click me)</div>
+                <div class="winScreenNote" onclick="window.reload()">Reload the page to replay!</div>
             </div>
         </div>
     </main>
+    <footer>
+        <div id="copyrightNote">© 2021 LetGame</div>
+    </footer>
 </body>
+
 </html>

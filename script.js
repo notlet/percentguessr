@@ -1,5 +1,10 @@
-$(document).ready(function() {
-    console.log('Document initialized successfully.')
+$(document).ready(function () {
+    console.log('Document initialized successfully.');
+    document.addEventListener("keyup", function(e) {
+        if (e.code === 'Enter') {
+            document.getElementById('controlsButton').click();
+        }
+    });
 });
 
 function rng(min, max) {
@@ -79,10 +84,15 @@ function continuePlaying() {
     } else activateWinScreen()
 }
 
+var winScreenActivated = false;
+
 function activateWinScreen() {
-    $('.winScreen').css('display', 'block');
-    $('#finalScoreCounter').text(points);
-    const container = document.querySelector('.winScreenFireworks');
-    const fireworks = new Fireworks(container, {});
-    fireworks.start();
+    if (winScreenActivated == false) {
+        winScreenActivated = true;
+        $('.winScreen').css('display', 'block');
+        $('#finalScoreCounter').text(points);
+        const container = document.querySelector('.winScreenFireworks');
+        const fireworks = new Fireworks(container, {});
+        fireworks.start();
+    }
 }
