@@ -1,0 +1,179 @@
+body {
+    margin: 0;
+    padding: 10px;
+    background: url("img/background.png") no-repeat;
+    background-size: cover;
+}
+
+.underlineSelf::first-letter { text-decoration: underline; }
+.underlineContent > *::first-letter { text-decoration: underline; }
+
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
+}
+
+#percentPlaceholder {
+    display: flex;
+    justify-content: center;
+}
+
+.pageTitle {
+    font-family: 'JetBrains Mono', monospace;
+    color: #ededed;
+    font-size: 40px;
+    margin: 20px auto;
+    cursor: default;
+    display: block;
+    width: fit-content;
+}
+
+.guessBox {
+    display: inline-block;
+    font-family: 'JetBrains Mono', monospace;
+    color: #ededed;
+    margin: 0 10px;
+    font-size: 25px;
+}
+
+.inputBox {
+    background: none;
+    border: rgb(237, 237, 237) 1px solid;
+    font-family: 'JetBrains Mono', monospace;
+    color: #ededed;
+    margin-right: 5px;
+    text-align: end;
+    outline: none;
+    padding: 5px;
+    width: 50px;
+    font-size: 25px;
+}
+
+#percentBar {
+    width: 40vw;
+    height: 30px;
+    margin: auto 0;
+    background: #9e9e9e77;
+    display: inline-block;
+}
+
+#lPart {
+    background: #d30000bb;
+    height: 100%;
+    display: block;
+    float: left;
+    transition: all 400ms;
+}
+
+#rPart {
+    background: #065ec4bb;
+    height: 100%;
+    display: block;
+    float: right;
+    transition: all 400ms;
+}
+
+#lPartGuess {
+    background: #ff3e3e94;
+    height: 100%;
+    display: block;
+    position: relative;
+    top: -30px;
+    float: left;
+    transition: all 400ms;
+}
+
+#rPartGuess {
+    background: #4a9eff94;
+    height: 100%;
+    display: block;
+    position: relative;
+    top: -30px;
+    float: right;
+    transition: all 400ms;
+}
+
+#controlsButton {
+    margin: auto;
+    display: block;
+    margin-top: 20px;
+    background: rgba(43, 43, 43, 0.404);
+    border: #ededed solid 2px;
+    font-family: 'JetBrains Mono', monospace;
+    color: #ededed;
+    font-size: 30px;
+    padding: 10px 20px;
+    transition: all 300ms;
+}
+
+#controlsButton:hover {
+    background: #77777777;
+}
+
+.infoBar {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 20px;
+    display: block;
+    margin: 20px auto;
+    width: fit-content;
+    color: #ededed;
+}
+
+.winScreen {
+    position: absolute;
+    background: #00000044;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+}
+
+.winScreenContents {
+    color: #ededed;
+    font-family: 'JetBrains Mono', monospace;
+    display: block;
+    width: fit-content;
+    text-align: center;
+    margin: auto;
+    margin-top: 100px;
+    background: #000000ad;
+    padding: 30px;
+    border: #edededad solid 2px;
+    z-index: 11;
+}
+
+.winScreenFireworks {
+    position: absolute;
+    width: 100vw;
+    height: 100vh;
+    top: 0;
+    left: 0;
+    z-index: 10;
+}
+
+.winScreenTitle {
+    font-size: 40px;
+    display: block;
+    animation: 1s linear 0s infinite alternate toggle_underline;
+}
+
+.winScreenFinalScore {
+    font-size: 30px;
+    display: block;
+    margin-top: 20px;
+}
+
+.winScreenNote {
+    font-size: 10px;
+    display: block;
+    margin-top: 10px;
+}
+
+@keyframes toggle_underline { from { text-decoration: none; } to { text-decoration: underline; }  }

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="./img/icon.png" type="image/x-icon">
+    <link rel="stylesheet" href="./style.css">
+    <script src="./jquery.js"></script>
+    <script src="./fireworks/fireworks.js"></script>
+    <script src="./script.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+    <title>PartGuessr</title>
+</head>
+<body>
+    <header>
+        <a class="pageTitle underlineSelf">PercentGuessr</a>
+    </header>
+    <main>
+        <div class="infoBar underlineSelf" id="instructions">
+            Press the 'Start' button!
+        </div>
+        <div id="percentPlaceholder">
+            <div class="guessBox">
+                <input type="number" placeholder="0" min="0" max="100" id="lPartInput" class="inputBox" onkeyup="inputValChange('lPartInput', 'rPartInput')">%
+            </div>
+            <div id="percentBar">
+                <div id="lPart" style="width: 0%;"></div>
+                <div id="rPart" style="width: 0%;"></div>
+                <div id="lPartGuess" style="width: 0%;"></div>
+                <div id="rPartGuess" style="width: 0%;"></div>
+            </div>
+            <div class="guessBox">
+                <input type="number" placeholder="0" min="0" max="100" id="rPartInput" class="inputBox" onkeyup="inputValChange('rPartInput', 'lPartInput')">%
+            </div>
+        </div>
+        <div id="result">
+            <div class="infoBar">
+                Score: <a id="score">0</a> | Round <a id="round">0</a>/10
+            </div>
+            <input type="button" value="Start!" id="controlsButton" onclick="round = 1; generateRound()">
+        </div>
+        <div class="winScreen" style="display: none;">
+            <div class="winScreenFireworks"></div>
+            <div class="winScreenContents">
+                <div class="winScreenTitle">YOU WON!</div>
+                <div class="winScreenFinalScore underlineSelf">Final Score: <a id="finalScoreCounter">0</a>/500</div>
+                <div class="winScreenNote" onclick="window.reload()">Reload the page to replay! (or click me)</div>
+            </div>
+        </div>
+    </main>
+</body>
+</html>
