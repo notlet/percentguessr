@@ -1,4 +1,5 @@
 $(document).ready(function () {
+    getLatestCommit();
     console.log('Document initialized successfully.');
     document.addEventListener("keyup", function(e) {
         if (e.code === 'Enter') {
@@ -15,8 +16,8 @@ function calculateColor(number) {
     return `rgb(${Math.round(number * 5)}, ${250 - Math.round(number * 5)}, 0)`
 }
 
-function removeMinus(number) {
-    return Math.sqrt(number * number)
+Number.prototype.removeMinus = function() {
+    return Math.sqrt(this * this)
 }
 
 var points = 0;
@@ -53,7 +54,7 @@ function generateRound() {
 function checkGuess() {
     const lPartGuess = $('#lPartInput').val();
     const rPartGuess = $('#rPartInput').val();
-    const difference = removeMinus(leftPartSize - lPartGuess);
+    const difference = (leftPartSize - lPartGuess).removeMinus();
     $('#lPartGuess').css('width', lPartGuess + "%");
     $('#rPartGuess').css('width', rPartGuess + "%");
     if (difference == 0) {
@@ -95,4 +96,25 @@ function activateWinScreen() {
         const fireworks = new Fireworks(container, {});
         fireworks.start();
     }
+}
+
+function getLatestCommit() {
+    const request = new Request('https://api.github.com/repos/LetGame/percentguessr/commits')
+    fetch(request)
+        .then(function (response) {
+            if (!response.ok) {
+                throw console.error('Error! Something went wrong requesting GitHub API!')
+            }
+            return response.json();
+        })
+        .then(function (response) {
+            const latestCommit = response[0]
+            const latestCommitNameAndVersion = latestCommit.commit.message.split('\n')[0];
+            const latestCommitName = latestCommitNameAndVersion.split(' v')[0];
+            const latestCommitVersion = latestCommitNameAndVersion.split(' v')[1];
+            const latestCommitURL = 'https://github.com/LetGame/percentguessr/commit/' + latestCommit.sha
+            
+            $('#updateName').text(latestCommitName).attr('href', latestCommitURL).attr('title', latestCommit.commit.message);
+            $('#updateVersion').text('v' + latestCommitVersion).attr('href', latestCommitURL).attr('title', latestCommit.commit.message);
+        });
 }

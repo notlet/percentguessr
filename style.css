@@ -207,3 +207,18 @@ footer {
     width: fit-content;
     color: #ededed;
 }
+
+#updateName {
+    color: #ededed;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+#updateVersion {
+    background: #3d3d3d;
+    color: #ececec;
+    border-radius: 5px;
+    padding: 3px 5px;
+    text-decoration: none;
+    cursor: pointer;
+}
