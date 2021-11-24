@@ -25,12 +25,12 @@
     <main>
         <div class="infoBar underlineSelf" id="instructions">
             Latest Update: 
-            <a id="updateName" href="#" target="_blank">Nothing</a>
-            <a id="updateVersion" href="#" target="_blank">v0.0.0</a>
+            <a id="updateName" target="_blank">Nothing</a>
+            <a id="updateVersion" target="_blank">( ﾉ ﾟｰﾟ)ﾉ</a>
         </div>
         <div id="percentPlaceholder">
             <div class="guessBox">
-                <input type="number" placeholder="0" min="0" max="100" id="lPartInput" class="inputBox" onkeyup="inputValChange('lPartInput', 'rPartInput')">%
+                <input type="number" disabled placeholder="??" min="0" max="100" id="lPartInput" class="inputBox" onkeyup="inputValChange('lPartInput', 'rPartInput')">%
             </div>
             <div id="percentBar">
                 <div id="lPart" style="width: 0%;"></div>
@@ -39,19 +39,19 @@
                 <div id="rPartGuess" style="width: 0%;"></div>
             </div>
             <div class="guessBox">
-                <input type="number" placeholder="0" min="0" max="100" id="rPartInput" class="inputBox" onkeyup="inputValChange('rPartInput', 'lPartInput')">%
+                <input type="number" disabled placeholder="??" min="0" max="100" id="rPartInput" class="inputBox" onkeyup="inputValChange('rPartInput', 'lPartInput')">%
             </div>
         </div>
         <div id="result">
             <div class="infoBar">
                 Score: <a id="score">0</a> | Round <a id="round">0</a>/10
             </div>
-            <input type="button" value="Start!" id="controlsButton" title="Press ENTER" onclick="round = 1; generateRound()">
+            <input type="button" value="Start!" id="controlsButton" title="Press ENTER" onclick="round = 1; generateRound(); $('.inputBox').removeAttr('disabled')">
         </div>
         <div class="winScreen" style="display: none;">
             <div class="winScreenFireworks"></div>
             <div class="winScreenContents">
-                <div class="winScreenTitle">YOU WON!</div>
+                <div class="winScreenTitle">GAME OVER</div>
                 <div class="winScreenFinalScore underlineSelf">Final Score: <a id="finalScoreCounter">0</a>/500</div>
                 <div class="winScreenNote" onclick="window.reload()">Reload the page to replay!</div>
             </div>
