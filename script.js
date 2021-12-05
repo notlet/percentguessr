@@ -1,5 +1,6 @@
 $(document).ready(function () {
     getLatestCommit();
+    loadConfig();
     console.log('Document initialized successfully.');
     document.addEventListener("keyup", function (e) {
         if (e.code === 'Enter') {
@@ -16,14 +17,62 @@ function calculateColor(number) {
     return `rgb(${Math.round(number * 5)}, ${250 - Math.round(number * 5)}, 0)`
 }
 
+function changeColor(col, amt) {
+    col = parseInt(col, 16);
+    return (((col & 0x0000FF) + amt) | ((((col >> 8) & 0x00FF) + amt) << 8) | (((col >> 16) + amt) << 16)).toString(16);
+}
+
+function hexToNum(hex) {
+    return parseInt(hex, 16);
+}
+
 Number.prototype.removeMinus = function () {
     return Math.sqrt(this * this)
 }
+
+var config = {
+    lPartColor: 'd30000',
+    rPartColor: '065fc4'
+};
 
 var points = 0;
 var round = 0;
 var leftPartSize = 0;
 var rightPartSize = 0;
+
+function loadConfig() {
+    if (localStorage.getItem('config') !== null) {
+        config = JSON.parse(localStorage.getItem('config'));
+    }
+
+    $('#lPartColorInput').val('#' + config.lPartColor);
+    $('#rPartColorInput').val('#' + config.rPartColor);
+    $('#lPart').css('background-color', '#' + config.lPartColor + 'f1');
+    $('#rPart').css('background-color', '#' + config.rPartColor + 'f1');
+
+    if (hexToNum(changeColor(config.lPartColor, 20)) < hexToNum('ffffff')) {
+        $('#lPartGuess').css('background-color', '#' + changeColor(config.lPartColor, 20) + '67');
+    } else {
+        console.log('LeftPartGuess color over maximum, using #ffffff.')
+        $('#lPartGuess').css('background-color', '#ffffff67');
+    }
+    
+    if (hexToNum(changeColor(config.rPartColor, 20)) < hexToNum('ffffff')) {
+        $('#rPartGuess').css('background-color', '#' + changeColor(config.rPartColor, 20) + '67');
+    } else {
+        console.log('RightPartGuess color over maximum, using #ffffff.')
+        $('#rPartGuess').css('background-color', '#ffffff67');
+    }
+
+}
+
+function saveConfig() {
+    config.lPartColor = ($('#lPartColorInput').val()).split('#')[1];
+    config.rPartColor = $('#rPartColorInput').val().split('#')[1];
+
+    localStorage.setItem('config', JSON.stringify(config))
+    loadConfig();
+}
 
 function inputValChange(input, oppositeInput) {
     const value = $(`#${input}`).val();

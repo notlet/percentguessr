@@ -35,8 +35,8 @@
             <div id="percentBar">
                 <div id="lPart" style="width: 0%;"></div>
                 <div id="rPart" style="width: 0%;"></div>
-                <div id="lPartGuess" style="width: 0%;"></div>
-                <div id="rPartGuess" style="width: 0%;"></div>
+                <div id="lPartGuess" style="width: 0%; background-color: #ffffff67;"></div>
+                <div id="rPartGuess" style="width: 0%; background-color: #ffffff67;"></div>
             </div>
             <div class="guessBox">
                 <input type="number" disabled placeholder="??" min="0" max="100" id="rPartInput" class="inputBox" onkeyup="inputValChange('rPartInput', 'lPartInput')">%
@@ -56,9 +56,18 @@
                 <div class="winScreenNote" onclick="window.reload()">Reload the page to replay!</div>
             </div>
         </div>
+        <div class="settingsScreen" style="display: none;">
+            <div class="settingsScreenContents">
+                <div style="font-size: 30px;" class="underlineSelf">Settings</div>
+                <div class="setting">Left Part Color: <input type="color" id="lPartColorInput" onchange="saveConfig()"></div>
+                <div class="setting">Right Part Color: <input type="color" id="rPartColorInput" onchange="saveConfig()"></div>
+                <input type="button" value="Close" class="button" id="closeSettingsButton" onclick="$('.settingsScreen').css('display', 'none');">
+            </div>
+        </div>
     </main>
     <footer>
-        <div id="copyrightNote">© 2021 LetGame</div>
+        <div id="footerText" style="text-decoration: underline; cursor: pointer;" onclick="$('.settingsScreen').css('display', 'block');">Settings</div>
+        <div id="footerText">© 2021 LetGame</div>
     </footer>
 </body>
 

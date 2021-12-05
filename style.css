@@ -71,7 +71,6 @@ input[type=number] {
 }
 
 #lPart {
-    background: #d30000bb;
     height: 100%;
     display: block;
     float: left;
@@ -79,7 +78,6 @@ input[type=number] {
 }
 
 #rPart {
-    background: #065ec4bb;
     height: 100%;
     display: block;
     float: right;
@@ -87,7 +85,6 @@ input[type=number] {
 }
 
 #lPartGuess {
-    background: #ff3e3e94;
     height: 100%;
     display: block;
     position: relative;
@@ -97,7 +94,6 @@ input[type=number] {
 }
 
 #rPartGuess {
-    background: #4a9eff94;
     height: 100%;
     display: block;
     position: relative;
@@ -197,13 +193,15 @@ footer {
     bottom: 0;
     width: 100%;
     left: 0;
+    display: flex;
+    justify-content: center;
 }
 
-#copyrightNote {
+#footerText {
     font-family: 'JetBrains Mono', monospace;
     font-size: 10px;
     display: block;
-    margin: 20px auto;
+    margin: 20px;
     width: fit-content;
     color: #ededed;
 }
@@ -221,4 +219,50 @@ footer {
     padding: 3px 5px;
     text-decoration: none;
     cursor: pointer;
+}
+
+.settingsScreen {
+    position: absolute;
+    background: #00000044;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+}
+
+.settingsScreenContents {
+    color: #ededed;
+    font-family: 'JetBrains Mono', monospace;
+    display: block;
+    width: fit-content;
+    text-align: center;
+    margin: auto;
+    margin-top: 70px;
+    background: #000000ad;
+    padding: 40px;
+    border: #edededad solid 2px;
+    z-index: 11;
+}
+
+.setting {
+    font-size: 20px;
+    display: block;
+    margin-top: 10px;
+}
+
+#closeSettingsButton {
+    margin: auto;
+    display: block;
+    margin-top: 20px;
+    background: rgba(43, 43, 43, 0.404);
+    border: #ededed solid 2px;
+    font-family: 'JetBrains Mono', monospace;
+    color: #ededed;
+    font-size: 25px;
+    padding: 8px 15px;
+    transition: all 300ms;
+}
+
+#closeSettingsButton:hover {
+    background: #77777777;
 }
